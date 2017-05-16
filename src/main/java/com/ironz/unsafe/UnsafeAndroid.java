@@ -127,6 +127,29 @@ public class UnsafeAndroid {
     }
 
     /**
+     * Gets an <code>boolean</code> field from the given object.
+     *
+     * @param obj    non-null; object containing the field
+     * @param offset offset to the field within <code>obj</code>
+     * @return the retrieved value
+     */
+    public boolean getBoolean(Object obj, long offset) {
+        return unsafe.getBoolean(obj, offset);
+    }
+
+    /**
+     * Gets an <code>boolean</code> field from the given object,
+     * using <code>volatile</code> semantics.
+     *
+     * @param obj    non-null; object containing the field
+     * @param offset offset to the field within <code>obj</code>
+     * @return the retrieved value
+     */
+    public boolean getBooleanVolatile(Object obj, long offset) {
+        return unsafe.getBooleanVolatile(obj, offset);
+    }
+
+    /**
      * Gets an <code>int</code> field from the given object.
      *
      * @param obj    non-null; object containing the field
