@@ -17,9 +17,10 @@
 package com.ironz.unsafe;
 
 import android.annotation.TargetApi;
-import sun.misc.Unsafe;
 
 import java.lang.reflect.Field;
+
+import sun.misc.Unsafe;
 
 /**
  * Created by Alexander Efremenkov.
@@ -236,6 +237,29 @@ public class UnsafeAndroid {
      */
     public void unpark(Object obj) {
         unsafe.unpark(obj);
+    }
+
+    /**
+     * Stores an <code>boolean</code> field into the given object.
+     *
+     * @param obj      non-null; object containing the field
+     * @param offset   offset to the field within <code>obj</code>
+     * @param newValue the value to store
+     */
+    public void putBoolean(Object obj, long offset, boolean newValue) {
+        unsafe.putBoolean(obj, offset, newValue);
+    }
+
+    /**
+     * Stores an <code>boolean</code> field into the given object,
+     * using <code>volatile</code> semantics.
+     *
+     * @param obj      non-null; object containing the field
+     * @param offset   offset to the field within <code>obj</code>
+     * @param newValue the value to store
+     */
+    public void putBooleanVolatile(Object obj, long offset, boolean newValue) {
+        unsafe.putBooleanVolatile(obj, offset, newValue);
     }
 
     /**
@@ -467,6 +491,10 @@ public class UnsafeAndroid {
      * @since 1.8
      */
     @TargetApi(24)
+    public void copyMemory(Object srcObj, long srcAddr, Object dstObj, long dstAddr, long bytes) {
+        unsafe.copyMemory(srcObj, srcAddr, dstObj, dstAddr, bytes);
+    }
+    
     public void copyMemory(long srcAddr, long dstAddr, long bytes) {
         unsafe.copyMemory(srcAddr, dstAddr, bytes);
     }
