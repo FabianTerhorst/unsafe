@@ -494,7 +494,11 @@ public class UnsafeAndroid {
     public void copyMemory(Object srcObj, long srcAddr, Object dstObj, long dstAddr, long bytes) {
         unsafe.copyMemory(srcObj, srcAddr, dstObj, dstAddr, bytes);
     }
-    
+
+    /**
+     * @since 1.8
+     */
+    @TargetApi(24)
     public void copyMemory(long srcAddr, long dstAddr, long bytes) {
         unsafe.copyMemory(srcAddr, dstAddr, bytes);
     }
