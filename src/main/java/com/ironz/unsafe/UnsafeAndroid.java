@@ -403,6 +403,14 @@ public class UnsafeAndroid {
      * @since 1.8
      */
     @TargetApi(24)
+    public long reallocateMemory(long address, long bytes) {
+        return unsafe.reallocateMemory(address, bytes);
+    }
+
+    /**
+     * @since 1.8
+     */
+    @TargetApi(24)
     public void freeMemory(long address) {
         unsafe.freeMemory(address);
     }
